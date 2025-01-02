@@ -16,9 +16,15 @@ const START_SERVER = () => {
   // error handling middleware
   app.use(errorHandlingMiddleware)
 
-  app.listen(env.APP_PORT, env.APP_HOST, () => {
-    console.log(`START SERVER SUCCESS!`)
-  })
+  if (env.BUILD_MODE === 'production') {
+    app.listen(process.env.PORT, () => {
+      console.log(`START SERVER RENDER SUCCESS!`)
+    })
+  } else {
+    app.listen(env.APP_PORT, env.APP_HOST, () => {
+      console.log(`START SERVER LOCAL SUCCESS!`)
+    })
+  }
 }
 
 connectDB()
