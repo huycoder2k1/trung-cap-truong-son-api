@@ -18,7 +18,7 @@ const START_SERVER = () => {
 
   if (env.BUILD_MODE === 'production') {
     app.listen(process.env.PORT, () => {
-      console.log(`START SERVER RENDER SUCCESS!`)
+      console.log(`START SERVER RENDER SUCCESS! ${process.env.PORT}`)
     })
   } else {
     app.listen(env.APP_PORT, env.APP_HOST, () => {
